@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "main";
+  src: url("./assets/fonts/JosefinSans-Italic-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "sub-main";
+  src: url("./assets/fonts/Pacifico-Regular.ttf");
+}
+@font-face {
+  font-family: "sub";
+  src: url("./assets/fonts/Cairo-VariableFont.ttf");
+}
+@import url("./assets/my-style/custom-style.css");

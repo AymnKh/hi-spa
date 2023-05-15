@@ -1,0 +1,10 @@
+.signup-btn{
+    background-color: #394867;
+    color: #F1F6F9;
+    font-family: "sub-main";
+    font-weight: bold;
+}
+.signup-btn:hover{
+    background-color: #F1F6F9;
+    color: #394867;
+}

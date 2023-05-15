@@ -1,0 +1,23 @@
+section{
+  background-color: #9BA4B5;
+  height: 100vh;
+}
+.card {
+  margin-top: 50px;
+}
+.tabs a {
+  color: #394867;
+  font-weight: bold;
+  font-size: 25px;
+  font-family: "sub-main";
+}
+
+.tabs .active {
+  background: inherit !important;
+}
+.head {
+  text-align: center;
+  font-weight: bold;
+  color: #394867;
+  font-family: "sub-main";
+}
