@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SignupResponse, User } from 'src/app/models/user.interface';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -13,7 +14,7 @@ export class SignupComponent {
   errorMessage: string = "";
   user = {} as User;
 
-  constructor(private authService:AuthService , private router:Router) { }
+  constructor(private authService: AuthService, private router: Router, private tokenService: TokenService) { }
   ngOnInit(): void {
    this.formInit();// initialize form
   }
@@ -33,6 +34,8 @@ export class SignupComponent {
     this.authService.register(user).subscribe({ // subscribe to register method
       next: (response: SignupResponse) => {
         this.user = response.user; // set user
+        response.token && this.tokenService.setToken(response.token); // save token in cookie
+       
         this.signupForm.reset(); // reset form
         this.errorMessage=""; // reset error message
        },

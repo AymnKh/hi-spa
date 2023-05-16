@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { StreamsRoutingModule } from './streams-routing.module';
 import { StreamsComponent } from './streams/streams.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { StreamsComponent } from './streams/streams.component';
   ],
   imports: [
     CommonModule,
-    StreamsRoutingModule
+    StreamsRoutingModule,
+    NavbarComponent
   ]
 })
 export class StreamsModule { }

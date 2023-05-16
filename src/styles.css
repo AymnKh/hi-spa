@@ -11,4 +11,5 @@
   font-family: "sub";
   src: url("./assets/fonts/Cairo-VariableFont.ttf");
 }
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("./assets/my-style/custom-style.css");
