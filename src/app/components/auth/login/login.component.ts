@@ -18,6 +18,7 @@ export interface UserLoginResponse {
 export class LoginComponent {
   errorMessage: string = '';
   loginForm!: FormGroup;
+  loading:boolean=false;
   constructor(private authService: AuthService, private router: Router, private tokenService: TokenService) { }
 
   ngOnInit(): void {
@@ -30,19 +31,21 @@ export class LoginComponent {
     });
   }
   login() {
+    this.loading=true;
     const user = this.loginForm.value;
     this.authService.login(user).subscribe({ // subscribe to login observable
       next: (res: UserLoginResponse) => {
         res.token &&
           this.tokenService.setToken(res.token); // save token in cookie
-
       },
       error: (err) => {
         console.log(err);
         this.errorMessage = err.error.message; // show error message
+        this.loading=false; // stop loading
       },
       complete: () => {
         this.router.navigate(['/streams']); // redirect to stream page
+        this.loading=false; // stop loading
       }
     })
   }

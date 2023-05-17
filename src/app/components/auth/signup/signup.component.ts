@@ -13,7 +13,7 @@ export class SignupComponent {
   signupForm !: FormGroup;
   errorMessage: string = "";
   user = {} as User;
-
+  loading:boolean=false;
   constructor(private authService: AuthService, private router: Router, private tokenService: TokenService) { }
   ngOnInit(): void {
    this.formInit();// initialize form
@@ -30,20 +30,22 @@ export class SignupComponent {
   }
 
   signup() {
+    this.loading=true;
     const user = this.signupForm.value; // get form value
     this.authService.register(user).subscribe({ // subscribe to register method
       next: (response: SignupResponse) => {
         this.user = response.user; // set user
         response.token && this.tokenService.setToken(response.token); // save token in cookie
-       
         this.signupForm.reset(); // reset form
         this.errorMessage=""; // reset error message
        },
       error: (error: any) => { 
-       this.errorMessage=error.error.message; // set error message
+        this.errorMessage = error.error.message; // set error message
+        this.loading=false; // stop loading
       },
       complete: () => { 
         this.router.navigate(['/streams']); // navigate to streams
+        this.loading=false; // stop loading
       }
     });  // call register method from auth service
   }

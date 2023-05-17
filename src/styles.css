@@ -13,3 +13,4 @@
 }
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("./assets/my-style/custom-style.css");
+@import url("../node_modules/animate.css/animate.min.css");

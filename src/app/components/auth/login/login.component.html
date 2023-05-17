@@ -1,18 +1,22 @@
-<div class="row">
-   <h6 class="center-align red-text text-darken-4">{{errorMessage}}</h6>
-  <form class="col s12" [formGroup]="loginForm" (ngSubmit)="login()">
-    <!-- username or email -->
-    <div class="input-field col s12">
-      <input id="username" type="text" formControlName="user" />
-      <label for="username">Username or Email</label>
+<section> 
+  <div class="row">
+    <div class="center-align" *ngIf="loading">
+      <app-loading></app-loading>
     </div>
-    <!-- password -->
-    <div class="input-field col s12">
-      <input id="password" type="password" formControlName="password" />
-      <label for="password">Password</label>
-    </div>
+    <h6 class="center-align red-text text-darken-4">{{ errorMessage }}</h6>
+    <form class="col s12" [formGroup]="loginForm" (ngSubmit)="login()">
+      <!-- username or email -->
+      <div class="input-field col s12">
+        <input id="username" type="text" formControlName="user" />
+        <label for="username">Username or Email</label>
+      </div>
+      <!-- password -->
+      <div class="input-field col s12">
+        <input id="password" type="password" formControlName="password" />
+        <label for="password">Password</label>
+      </div>
 
-     <button class="waves-effect btn login-btn">Login</button>
-   
-  </form>
-</div>
+      <button class="waves-effect btn login-btn">Login</button>
+    </form>
+  </div>
+</section>

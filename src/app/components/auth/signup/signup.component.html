@@ -1,36 +1,45 @@
-<div class="row">
-   <h6 class="center-align red-text text-darken-4">{{errorMessage}}</h6>
-  <form class="col s12" [formGroup]="signupForm" (ngSubmit)="signup()">
-    <!-- firstname and lastname -->
-    <div class="input-field col s6">
-      <input id="first_name" type="text" formControlName="firstname"/>
-      <label for="first_name">First Name</label>
+<section>
+  <div class="row">
+    <div class="center-align" *ngIf="loading">
+      <app-loading></app-loading>
     </div>
-    <div class="input-field col s6">
-      <input id="last_name" type="text" formControlName="lastname"/>
-      <label for="last_name">Last Name</label>
-    </div>
-    <!-- username -->
-    <div class="input-field col s12">
-      <input id="username" type="text" formControlName="username" />
-      <label for="username">Username</label>
-    </div>
-    <!-- email -->
-    <div class="input-field col s12">
-      <input id="email" type="email" formControlName="email" />
-      <label for="email">Email</label>
-    </div>
-    <!-- password -->
-    <div class="input-field col s6">
-      <input id="password" type="password" formControlName="password" />
-      <label for="password">Password</label>
-    </div>
-    <!-- confirm password -->
-    <div class="input-field col s6">
-      <input id="confirmPassword" type="password" formControlName="confirmPassword"/>
-      <label for="confirmPassword">Re-Password</label>
-    </div>
+    <h6 class="center-align red-text text-darken-4">{{ errorMessage }}</h6>
+    <form class="col s12" [formGroup]="signupForm" (ngSubmit)="signup()">
+      <!-- firstname and lastname -->
+      <div class="input-field col s6">
+        <input id="first_name" type="text" formControlName="firstname" />
+        <label for="first_name">First Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="last_name" type="text" formControlName="lastname" />
+        <label for="last_name">Last Name</label>
+      </div>
+      <!-- username -->
+      <div class="input-field col s12">
+        <input id="username" type="text" formControlName="username" />
+        <label for="username">Username</label>
+      </div>
+      <!-- email -->
+      <div class="input-field col s12">
+        <input id="email" type="email" formControlName="email" />
+        <label for="email">Email</label>
+      </div>
+      <!-- password -->
+      <div class="input-field col s6">
+        <input id="password" type="password" formControlName="password" />
+        <label for="password">Password</label>
+      </div>
+      <!-- confirm password -->
+      <div class="input-field col s6">
+        <input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+        />
+        <label for="confirmPassword">Re-Password</label>
+      </div>
 
-    <button class="waves-effect btn signup-btn">Signup</button>
-  </form>
-</div>
+      <button class="waves-effect btn signup-btn">Signup</button>
+    </form>
+  </div>
+</section>

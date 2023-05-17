@@ -1,6 +1,6 @@
 import { TokenService } from './../services/token.service';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,9 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard {
   constructor(private tokenService: TokenService , private router:Router) { }
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     const token = this.tokenService.getToken(); // get token from cookie
     if (!token) {
