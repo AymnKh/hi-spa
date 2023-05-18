@@ -4,7 +4,7 @@
 
 input[type="text"]:not(.browser-default):focus:not([readonly]) + label,
 input[type="password"]:not(.browser-default):focus:not([readonly]) + label,
-input[type="email"]:not(.browser-default):focus:not([readonly]) + label {
+input[type="email"]:not(.browser-default):focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly])+label {
   color: #394867;
   font-family: "sub-main";
   
