@@ -85,3 +85,6 @@ nav {
 .side-footer .material-icons {
   margin: 0 5px;
 }
+nav.nav-extended .nav-wrapper{
+  min-height: 85px;
+}

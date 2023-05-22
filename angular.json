@@ -38,7 +38,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["moment"],
+            "allowedCommonJsDependencies": ["moment", "lodash"],
             "outputPath": "dist/hi-spa",
             "index": "src/index.html",
             "main": "src/main.ts",
