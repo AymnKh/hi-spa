@@ -13,6 +13,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'people',
+loadChildren: () => import('./components/people/pepole.module').then(m => m.PepoleModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'post/:id',
     loadChildren: () => import('./components/comments/comments.module').then(m => m.CommentsModule),
   }

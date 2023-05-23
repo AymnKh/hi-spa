@@ -19,10 +19,17 @@ export interface Post {
     username: string
     post: string
     totalLikes: number
-    comments: any[]
+    comments: Comments[]
     likes: any[]
     createdAt: string
     updatedAt: string
     __v: number
 
 }
+
+export interface Comments { 
+    _id: string
+    username: string
+    comment: string
+    createdAt: string
+ }

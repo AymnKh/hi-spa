@@ -57,3 +57,13 @@
 .collection {
   border: none !important;
 }
+
+.comments{
+  margin-top:-25px;
+}
+.comment{
+  margin-top: -15px;
+}
+.post-comment {
+  font-size: 16px;
+}

@@ -1,18 +1,25 @@
-.collection{
-    min-width: 280px;
-  }
-.collection-header{
-    max-height: 44px;
-    text-align: center;
-    padding: 10px 15px 10px 4px !important;
-    font-weight: 500 !important;
-    
+.collection {
+  min-width: 280px;
 }
-span , i{
-    color: #212A3E !important;
+.collection-header {
+  max-height: 44px;
+  text-align: center;
+  padding: 10px 15px 10px 4px !important;
+  font-weight: 500 !important;
 }
-.count{
-    margin-left: 5px;
-    color: #394867 !important;
-    font-weight: initial !important;
+span,
+i {
+  color: #212a3e !important;
+}
+.count {
+  margin-left: 5px;
+  color: #394867 !important;
+  font-weight: initial !important;
+}
+a {
+  color: #394867 !important;
+  font-weight: 600 !important;
+}
+a.active{
+    color: #9BA4B5 !important;
 }

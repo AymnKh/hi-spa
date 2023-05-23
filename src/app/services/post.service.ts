@@ -15,19 +15,20 @@ export class PostService {
     return this.http.post(`${environment.apiUrl}/posts/add`, { post });
   }
 
-  getAllPosts() :Observable<Post[]>{
+  getAllPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${environment.apiUrl}/posts/`);
   }
 
+  getPost(postId: string): Observable<Post> { 
+    return this.http.get<Post>(`${environment.apiUrl}/posts/${postId}`);
+   }
+
   likePost(postId: string) {
-    return this.http.post(`${environment.apiUrl}/posts/${postId}`,{});
+    return this.http.post(`${environment.apiUrl}/posts/${postId}`, {});
   }
 
-  addComment(postId:string,comment: string) {
-    return this.http.post(`${environment.apiUrl}/posts/comment`, { 
-      postId,
-      comment
-     });
+  addComment(postId: string, comment: string) {
+    return this.http.post(`${environment.apiUrl}/posts/comment/${postId}`, { comment });
   }
 
 }
