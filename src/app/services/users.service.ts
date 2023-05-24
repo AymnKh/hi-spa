@@ -11,7 +11,18 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUsers() :Observable<User[]>{
+  getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${environment.apiUrl}/users`);
   }
+
+  getUSerById(id: string): Observable<User> {
+    return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
+  }
+
+  followUser(followId: string) {
+    return this.http.post(`${environment.apiUrl}/friends/follow-user`, { followId });
+  }
+  unfollowUser(followId: string) { 
+    return this.http.post(`${environment.apiUrl}/friends/unfollow-user`, { followId });
+   }
 }

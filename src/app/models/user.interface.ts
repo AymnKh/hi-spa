@@ -11,6 +11,8 @@ export interface User {
     username: string
     password: string
     posts: Post[]
+    followers: User[]
+    following: Following[]
     _id: string
 }
 
@@ -27,9 +29,14 @@ export interface Post {
 
 }
 
-export interface Comments { 
+export interface Following {
+    followedUser: User
+    _id: string
+}
+export interface Comments {
     _id: string
     username: string
     comment: string
     createdAt: string
- }
+}
+
