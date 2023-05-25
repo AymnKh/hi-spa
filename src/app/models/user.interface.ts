@@ -11,8 +11,9 @@ export interface User {
     username: string
     password: string
     posts: Post[]
-    followers: User[]
+    followers: Followers[]
     following: Following[]
+    notifications: Notifications[]
     _id: string
 }
 
@@ -33,10 +34,22 @@ export interface Following {
     followedUser: User
     _id: string
 }
+export interface Followers {
+    followerUser: User
+    _id: string
+}
 export interface Comments {
     _id: string
     username: string
     comment: string
     createdAt: string
+}
+export interface Notifications {
+    _id: string
+    action: string
+    createdAt: string
+    senderId: string
+    read: boolean
+    viewProfile: boolean
 }
 

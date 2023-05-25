@@ -1,0 +1,40 @@
+<div>
+  <app-navbar></app-navbar>
+  <div class="container-fluid" style="margin-top: 10px">
+    <div class="row">
+      <div class="col s12 m4 l3">
+        <app-side></app-side>
+      </div>
+      <div class="col s12 m8 l9"*ngIf="notifications.length !== 0" >
+    		<div class="row">
+          <p class="col s12 m9 right-align">
+            <span class="mark-all">Mark All As Read</span>
+            <i class="material-icons right">done_all</i>
+          </p>
+          <ul class="collection col s12 m9">
+            <li class="collection-item avatar" *ngFor="let item of notifications">
+              <img class="circle" src="http://placeimg.com/200/200/nature">
+              <span class="title">{{item.action}}</span>
+              <a class="secondary-content">
+                <i class="material-icons" *ngIf="!item.read">radio_button_unchecked</i>
+                <i class="material-icons" *ngIf="item.read">radio_button_checked</i>
+              </a>
+              <p class="time">{{time(item.createdAt)}}</p>
+              <div>
+                <i class="material-icons" (click)="markAsRead(item._id)">
+                  check
+                </i>
+                <i class="material-icons" (click)="markAsRead(item._id)" >
+                  delete_forever
+                </i>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col s12 m8 l9" *ngIf="notifications.length == 0">
+        <h3>No Notifications</h3>
+      </div>
+    </div>
+  </div>
+</div>

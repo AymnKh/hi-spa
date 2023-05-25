@@ -24,5 +24,9 @@ export class UsersService {
   }
   unfollowUser(followId: string) { 
     return this.http.post(`${environment.apiUrl}/friends/unfollow-user`, { followId });
-   }
+  }
+  
+  markNotifications(id: string, deleteIt?: boolean) {
+    return this.http.post(`${environment.apiUrl}/friends/mark/${id}`, { deleteIt });
+  }
 }

@@ -18,6 +18,21 @@ loadChildren: () => import('./components/people/pepole.module').then(m => m.Pepo
     canActivate: [AuthGuard]
   },
   {
+    path: 'following',
+    loadChildren: () => import('./components/following/following.module').then(m => m.FollowingModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'followers',
+    loadChildren: () => import('./components/followers/followers.module').then(m => m.FollowersModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./components/notifications/notifications.module').then(m => m.NotificationsModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'post/:id',
     loadChildren: () => import('./components/comments/comments.module').then(m => m.CommentsModule),
   }
