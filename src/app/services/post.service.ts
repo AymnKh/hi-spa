@@ -21,8 +21,8 @@ export class PostService {
 
   getPost(postId: string): Observable<Post> { 
     return this.http.get<Post>(`${environment.apiUrl}/posts/${postId}`);
-   }
-
+  }
+ 
   likePost(postId: string) {
     return this.http.post(`${environment.apiUrl}/posts/${postId}`, {});
   }

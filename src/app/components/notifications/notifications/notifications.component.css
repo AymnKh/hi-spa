@@ -37,6 +37,7 @@
 .right-align {
   padding-right: 25px !important;
   margin-bottom: 5px !important;
+  cursor: pointer;
 }
 
 .material-icons {

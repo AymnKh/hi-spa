@@ -31,7 +31,6 @@ export class FollowingComponent {
     this.usersService.getUSerById(userId).subscribe({
       next: (user) => {
         this.user = user; // set user
-        console.log(this.user);
         this.following = user.following; // set following
       },
       error: (err) => {

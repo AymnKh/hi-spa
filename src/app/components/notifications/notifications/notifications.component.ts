@@ -52,4 +52,14 @@ export class NotificationsComponent {
       }
     });
   }
+  markAllAsRead() {
+    this.usersService.markAllAsRead().subscribe({
+      next: () => {
+        this.socket.emit('reload', {}); // emit refresh event
+      },
+      error: (err) => {
+        console.log(err); // log error
+      }
+    });
+  }
 }

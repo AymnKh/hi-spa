@@ -29,4 +29,8 @@ export class UsersService {
   markNotifications(id: string, deleteIt?: boolean) {
     return this.http.post(`${environment.apiUrl}/friends/mark/${id}`, { deleteIt });
   }
+
+  markAllAsRead() {
+    return this.http.post(`${environment.apiUrl}/friends/mark-all`, {});
+  }
 }

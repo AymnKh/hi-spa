@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -14,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'people',
-loadChildren: () => import('./components/people/pepole.module').then(m => m.PepoleModule),
+    loadChildren: () => import('./components/people/pepole.module').then(m => m.PepoleModule),
     canActivate: [AuthGuard]
   },
   {

@@ -18,9 +18,16 @@
           <p>{{ post.post }}</p>
         </div>
         <div class="card-action">
-          <i class="material-icons" 
-          [ngClass]="(!isUserLikedPost(post.likes , user.username)) ? 'not-liked' : 'liked'"
-          (click)="likePost(post)">thumb_up</i>
+          <i
+            class="material-icons"
+            [ngClass]="
+              !isUserLikedPost(post.likes, user.username)
+                ? 'not-liked'
+                : 'liked'
+            "
+            (click)="likePost(post)"
+            >thumb_up</i
+          >
           <span class="icon-span">{{ post.likes.length }}</span>
           <i class="material-icons" (click)="commentBox(post._id)">comment</i>
           <span class="icon-span">{{ post.comments.length }}</span>

@@ -7,8 +7,8 @@
       </div>
       <div class="col s12 m8 l9"*ngIf="notifications.length !== 0" >
     		<div class="row">
-          <p class="col s12 m9 right-align">
-            <span class="mark-all">Mark All As Read</span>
+          <p class="col s12 m9 right-align" (click)="markAllAsRead()">
+            <span class="mark-all" >Mark All As Read</span>
             <i class="material-icons right">done_all</i>
           </p>
           <ul class="collection col s12 m9">
