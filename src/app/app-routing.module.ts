@@ -36,6 +36,10 @@ const routes: Routes = [
   {
     path: 'post/:id',
     loadChildren: () => import('./components/comments/comments.module').then(m => m.CommentsModule),
+  },
+  {
+    path: 'chat/:id',
+    loadChildren: () => import('./components/chat/chat.module').then(m => m.ChatModule),
   }
 ];
 

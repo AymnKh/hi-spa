@@ -34,7 +34,7 @@
                   (click)="unfollow(user._id)"
                   >unFollow</a
                 >
-                <a><i class="material-icons right chat-icon">message</i></a>
+                <a [routerLink]="['/chat',user._id]"><i class="material-icons right chat-icon">message</i></a>
               </div>
             </div>
           </div>
