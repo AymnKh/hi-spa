@@ -1,3 +1,5 @@
+import { Messages } from "./messages.interface"
+
 export interface SignupResponse {
     message: string
     user: User
@@ -14,7 +16,13 @@ export interface User {
     followers: Followers[]
     following: Following[]
     notifications: Notifications[]
+    chatList: chat[]
     _id: string
+}
+
+export interface chat {
+    receiverId: User,
+    messageId: Messages
 }
 
 export interface Post {

@@ -34,6 +34,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'messages',
+    loadChildren: () => import('./components/messages-notifications/message-notifications.module').then(m => m.MessageNotificationsModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'post/:id',
     loadChildren: () => import('./components/comments/comments.module').then(m => m.CommentsModule),
   },

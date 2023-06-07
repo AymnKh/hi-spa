@@ -1,0 +1,48 @@
+<div>
+  <app-navbar></app-navbar>
+  <div class="container-fluid" style="margin-top: 10px">
+    <div class="row">
+      <div class="col s12 m4 l3">
+        <app-side></app-side>
+      </div>
+      <div class="col s12 m8 l9">
+        <div class="row">
+          <p class="col s12 m9 right-align">
+            <span class="mark-all">Mark All As Read</span>
+            <i class="material-icons right">done_all</i>
+          </p>
+          <ul class="collection col s12 m9" *ngFor="let item of chatList">
+            <li class="collection-item avatar">
+              <div [routerLink]="['/chat', item.receiverId._id]">
+                <img class="circle" src="http://placeimg.com/200/200/nature" />
+                <span class="title">{{ item.receiverId.username }}</span>
+                <h4 class="">
+                  {{
+                    item.messageId.messages[item.messageId.messages.length - 1]
+                      .body
+                  }}
+                </h4>
+                <p class="time">
+                  {{
+                    time(
+                      item.messageId.messages[
+                        item.messageId.messages.length - 1
+                      ].createdAt
+                    )
+                  }}
+                </p>
+              </div>
+              <a class="secondary-content">
+                <i class="material-icons">radio_button_unchecked</i>
+                <i class="material-icons">radio_button_checked</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col s12 m8 l9">
+        <h3>No Notifications</h3>
+      </div>
+    </div>
+  </div>
+</div>

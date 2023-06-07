@@ -6,6 +6,7 @@ import { ChatComponent } from './chat/chat.component';
 import { MessagesComponent } from './messages/messages.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
+import { NgxAutoScrollModule } from "ngx-auto-scroll";
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ChatRoutingModule,
     NavbarComponent,
-    FormsModule
+    FormsModule,
+    NgxAutoScrollModule
+
   ]
 })
 export class ChatModule { }

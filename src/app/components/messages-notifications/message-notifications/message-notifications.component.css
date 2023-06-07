@@ -1,0 +1,52 @@
+.title {
+  text-align: center;
+  font-size: 16px !important;
+  font-weight: bold;
+}
+
+.time {
+  margin-bottom: 10px !important;
+  color: #394867;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.mark-all {
+  text-align: center;
+  font-size: 15px !important;
+  font-weight: bold;
+  color: #212a3e !important;
+}
+
+.collection {
+  padding-left: 0 !important;
+}
+
+.avatar {
+  padding-left: 60px !important;
+}
+
+.secondary-content {
+  top: 38px !important;
+}
+
+.circle {
+  left: 7px !important;
+}
+
+
+
+.material-icons {
+  color: #212a3e !important;
+  margin-right: 10px;
+  cursor: pointer !important;
+}
+
+.material-icons:hover {
+  color: #f1f4fa !important;
+}
+
+
+.collection-item > div {
+    cursor: pointer;
+}

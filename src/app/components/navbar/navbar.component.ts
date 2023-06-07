@@ -1,13 +1,13 @@
 import { Component, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TokenService } from 'src/app/services/token.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import * as M from 'materialize-css';
 import { User } from 'src/app/models/user.interface';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
