@@ -5,7 +5,7 @@
       <div class="col s12 m4 l3">
         <app-side></app-side>
       </div>
-      <div class="col s12 m8 l9">
+      <div class="col s12 m8 l9" *ngIf="chatList.length > 0">
         <div class="row">
           <p class="col s12 m9 right-align">
             <span class="mark-all">Mark All As Read</span>
@@ -16,12 +16,12 @@
               <div [routerLink]="['/chat', item.receiverId._id]">
                 <img class="circle" src="http://placeimg.com/200/200/nature" />
                 <span class="title">{{ item.receiverId.username }}</span>
-                <h4 class="">
+                <h6  [ngClass]="item.messageId.messages[item.messageId.messages.length - 1].senderName !== user.username ? 'notification' : 'sneder'">
                   {{
                     item.messageId.messages[item.messageId.messages.length - 1]
                       .body
                   }}
-                </h4>
+                </h6>
                 <p class="time">
                   {{
                     time(
@@ -40,8 +40,8 @@
           </ul>
         </div>
       </div>
-      <div class="col s12 m8 l9">
-        <h3>No Notifications</h3>
+      <div class="col s12 m8 l9" *ngIf="chatList.length <= 0">
+        <h3>No Messages</h3>
       </div>
     </div>
   </div>
