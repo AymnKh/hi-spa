@@ -7,37 +7,53 @@
       </div>
       <div class="col s12 m8 l9" *ngIf="chatList.length > 0">
         <div class="row">
-          <p class="col s12 m9 right-align">
-            <span class="mark-all">Mark All As Read</span>
-            <i class="material-icons right">done_all</i>
-          </p>
-          <ul class="collection col s12 m9" *ngFor="let item of chatList">
-            <li class="collection-item avatar">
-              <div [routerLink]="['/chat', item.receiverId._id]">
-                <img class="circle" src="http://placeimg.com/200/200/nature" />
-                <span class="title">{{ item.receiverId.username }}</span>
-                <h6  [ngClass]="item.messageId.messages[item.messageId.messages.length - 1].senderName !== user.username ? 'notification' : 'sneder'">
-                  {{
-                    item.messageId.messages[item.messageId.messages.length - 1]
-                      .body
-                  }}
-                </h6>
-                <p class="time">
-                  {{
-                    time(
+          <ng-container *ngFor="let item of chatList">
+            <ul class="collection col s12 m9">
+              <li class="collection-item avatar">
+                <div
+                  [routerLink]="['/chat', item.receiverId._id]"
+                  (click)="markAllAsRead(user._id, item.receiverId._id)"
+                >
+                  <img
+                    class="circle"
+                    src="http://placeimg.com/200/200/nature"
+                  />
+                  <span class="title">{{ item.receiverId.username }}</span>
+                  <h6
+                    [ngClass]="
                       item.messageId.messages[
                         item.messageId.messages.length - 1
-                      ].createdAt
-                    )
-                  }}
-                </p>
-              </div>
-              <a class="secondary-content">
-                <i class="material-icons">radio_button_unchecked</i>
-                <i class="material-icons">radio_button_checked</i>
-              </a>
-            </li>
-          </ul>
+                      ].isRead ||
+                      item.messageId.messages[
+                        item.messageId.messages.length - 1
+                      ].senderName === user.username
+                        ? ''
+                        : 'notification'
+                    "
+                  >
+                    {{
+                      item.messageId.messages[
+                        item.messageId.messages.length - 1
+                      ].body
+                    }}
+                  </h6>
+                  <p class="time">
+                    {{
+                      time(
+                        item.messageId.messages[
+                          item.messageId.messages.length - 1
+                        ].createdAt
+                      )
+                    }}
+                  </p>
+                </div>
+                <a class="secondary-content">
+                  <i class="material-icons">radio_button_unchecked</i>
+                  <i class="material-icons">radio_button_checked</i>
+                </a>
+              </li>
+            </ul>
+          </ng-container>
         </div>
       </div>
       <div class="col s12 m8 l9" *ngIf="chatList.length <= 0">

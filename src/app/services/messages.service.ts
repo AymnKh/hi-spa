@@ -17,4 +17,9 @@ export class MessagesService {
   getAllMessages(senderId: string, receiverId: string):Observable<Messages> {
     return this.http.get<Messages>(`${environment.apiUrl}/chat-message/${senderId}/${receiverId}`);
   }
+  markAllMessages(senderId: string, receiverId: string) {
+    return this.http.get(`${environment.apiUrl}/mark-message/${senderId}/${receiverId}`);
+  }
+
+
 }

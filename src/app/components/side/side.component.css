@@ -9,7 +9,7 @@
 }
 span,
 i {
-  color: #212a3e !important;
+  color: #212a3e;
 }
 .count {
   margin-left: 5px;
@@ -20,6 +20,35 @@ a {
   color: #394867 !important;
   font-weight: 600 !important;
 }
-a.active{
-    color: #9BA4B5 !important;
+a.active {
+  color: #9ba4b5 !important;
+}
+
+.count_badge{
+  margin-left: 2px;
+  background-color: #394867;
+  padding: 7px;
+  border-radius: 30%;
+}
+.alret {
+  /* color: red; */
+  animation: colorChange 0.6s infinite;
+}
+
+@keyframes colorChange {
+  0% {
+    color: #F1F6F9;
+  }
+  25% {
+    color: #394867;
+  }
+  50% {
+    color: #212A3E;
+  }
+  75% {
+    color: #9BA4B5;
+  }
+  100% {
+    color: #212A3E;
+  }
 }

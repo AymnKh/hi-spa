@@ -1,3 +1,4 @@
+import { MessagesService } from './../../../services/messages.service';
 import { Component } from '@angular/core';
 import { io } from 'socket.io-client';
 import { User, chat } from 'src/app/models/user.interface';
@@ -14,7 +15,7 @@ export class MessageNotificationsComponent {
   user = {} as User;
   chatList: chat[] = [];
   socket: any;
-  constructor(private usersService: UsersService, private tokenService: TokenService) {
+  constructor(private usersService: UsersService, private tokenService: TokenService, private messagesService: MessagesService) {
     this.socket = io('http://localhost:3000'); // connect to the socket
   }
 
@@ -36,10 +37,22 @@ export class MessageNotificationsComponent {
       },
       error: (err) => {
         console.log(err); // log error
-      }
+      },
+     
     });
   }
   time(time: Date) {
     return moment(time).fromNow(); // return time from now
+  }
+
+  markAllAsRead(sId: string, rId: string) {
+    this.messagesService.markAllMessages(sId, rId).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 }

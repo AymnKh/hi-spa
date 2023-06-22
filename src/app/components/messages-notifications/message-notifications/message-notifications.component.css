@@ -48,20 +48,29 @@
   cursor: pointer;
 }
 .notification {
-  color: red;
+  color: #394867;
   font-weight: bolder;
-   animation: tilt-shaking 0.3s infinite;
+  animation: tilt-shaking 0.3s infinite;
 }
 .sneder {
   color: #394867;
   font-weight: 300;
 }
 
-
 @keyframes tilt-shaking {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(2deg); }
-  50% { transform: rotate(0eg); }
-  75% { transform: rotate(-2deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
