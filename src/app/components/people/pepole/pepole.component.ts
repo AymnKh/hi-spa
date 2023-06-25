@@ -14,6 +14,7 @@ export class PepoleComponent {
   user = {} as User;
   following: Following[] = [];
   socket: any;
+  onlineUsers: string[] = [];
   constructor(private usersService: UsersService, private tokenService: TokenService) { 
     this.socket = io('http://localhost:3000'); // connect to the socket
   }
@@ -91,5 +92,19 @@ export class PepoleComponent {
         this.socket.emit('reload'); // emit an event to reload the posts
        }
     });
+  }
+
+  online(event:any) {
+    this.onlineUsers = event;
+  }
+
+  checkOnlineStatus(id: string) {
+    const result = _.indexOf(this.onlineUsers, id);
+    if (result > -1) {
+      return true;
+    } else {
+      return false;
+    }
+
   }
 }

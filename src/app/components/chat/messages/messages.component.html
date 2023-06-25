@@ -14,9 +14,10 @@
             <div class="row">
               <div class="col s12 receiver-name">
                 <span>
-                  {{receiverName}}
+                  {{ receiverName }}
                   <span *ngIf="typing">is typing....</span>
-                  <p class="isOnline">Online</p>
+                  <p class="isOnline" *ngIf="isOnline">Online</p>
+                  <p class="isOffline" *ngIf="!isOnline">Offline</p>
                 </span>
               </div>
             </div>
@@ -40,20 +41,29 @@
     </div>
   </div>
   <div class="col s12">
-    <div class="row panel-content" ngx-auto-scroll  observe-attributes >
+    <div class="row panel-content" ngx-auto-scroll observe-attributes>
       <div class="card" *ngFor="let msg of messagesResponse.messages">
-        <div class="left left-message col s12" *ngIf="senderUser.username !== receiverUser.username && senderUser.username !== msg.senderName">
+        <div
+          class="left left-message col s12"
+          *ngIf="
+            senderUser.username !== receiverUser.username &&
+            senderUser.username !== msg.senderName
+          "
+        >
           <img src="http://placeimg.com/50/50/nature" alt="" class="circle" />
           <div class="chat-bubble left">
-            <div class="message">{{msg.body}}</div>
+            <div class="message">{{ msg.body }}</div>
           </div>
-          <span class="msg_time_send">{{time(msg.createdAt)}}</span>
+          <span class="msg_time_send">{{ time(msg.createdAt) }}</span>
         </div>
-        <div class="right col s12" *ngIf="senderUser.username === msg.senderName">
+        <div
+          class="right col s12"
+          *ngIf="senderUser.username === msg.senderName"
+        >
           <div class="chat-bubble right">
-            <div class="message">{{msg.body}}</div>
+            <div class="message">{{ msg.body }}</div>
           </div>
-          <span class="msg_time_send">{{ time(msg.createdAt)}}</span>
+          <span class="msg_time_send">{{ time(msg.createdAt) }}</span>
           <img
             src="http://placeimg.com/50/50/nature"
             width="20"
@@ -66,7 +76,10 @@
   </div>
   <div class="col s12 wrapper">
     <div class="row">
-      <form #messageForm="ngForm" (ngSubmit)="sendMessage() ;messageForm.reset()">
+      <form
+        #messageForm="ngForm"
+        (ngSubmit)="sendMessage(); messageForm.reset()"
+      >
         <div class="col s8 m9 l10">
           <textarea
             (keypress)="isTyping()"
@@ -77,11 +90,16 @@
             placeholder="write your message and press send"
           ></textarea>
         </div>
-        <div class="col s1">
-          <button class="emoji">😃</button>
+        <div class="col s1" #container>
+          <button class="emoji" type="button" (click)="toggled()">😃</button>
+          <emoji-mart
+            class="picker"
+            *ngIf="isOpened"
+            (emojiSelect)="emojiSelected($event)"
+          ></emoji-mart>
         </div>
         <div class="col s1">
-          <button class="suffix btn" [disabled]="!messageForm.form.valid">
+          <button class="suffix btn" type="submit" [disabled]="!messageForm.form.valid">
             Send
           </button>
         </div>

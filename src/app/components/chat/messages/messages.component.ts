@@ -1,20 +1,27 @@
 import { MessagesService } from './../../../services/messages.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UsersService } from 'src/app/services/users.service';
-import { Component } from '@angular/core';
+import { Component, ElementRef, Input, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user.interface';
 import { Messages } from 'src/app/models/messages.interface';
 import { io } from 'socket.io-client';
 import * as moment from 'moment';
+import * as _ from 'lodash';
+import { Observable, Subject } from "rxjs";
+
 
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.css']
+  styleUrls: ['./messages.component.css'],
+ 
 })
 export class MessagesComponent {
-
+  @Input('onlineUsers') onlineUsers!: string[];
+  @Input() emojiInput$!: Subject<string>;
+  @ViewChild("container") container!: ElementRef<HTMLElement> ;
+  isOpened = false;
   receiverId: string = '';
   receiverName: string = '';
   receiverUser = {} as User;
@@ -24,6 +31,7 @@ export class MessagesComponent {
   socket: any;
   typing: boolean = false;
   typingMessage!: NodeJS.Timeout;
+  isOnline!: boolean;
   constructor(private route: ActivatedRoute, private usersService: UsersService, private tokenService: TokenService, private messagesService: MessagesService) {
     this.socket = io('http://localhost:3000'); // connect to the socket
   }
@@ -50,12 +58,49 @@ export class MessagesComponent {
       }
     });
   }
+  ngOnChanges(changes: SimpleChanges) {
+    if (!_.isEmpty(changes['onlineUsers'].currentValue)) {
+      const result = _.indexOf(changes['onlineUsers'].currentValue, this.receiverId);
+      if (result > -1) {
+        this.isOnline = true;
+      } else {
+        this.isOnline = false;
+      }
+
+    }
+
+  }
   ngAfterViewInit() {
     const params = { // object with snder id and receiver id
       sender: this.senderUser._id,
       receiver: this.receiverId
     }
     this.socket.emit('join-chat', params); // emit an event with params
+  }
+
+  emojiSelected(event: any) {
+    this.message = this.message + event.emoji.native;
+  }
+
+  eventHandler = (event: Event) => {
+    // Watching for outside clicks
+    if (!this.container?.nativeElement.contains(event.target as Node)) {
+      this.isOpened = false;
+      window.removeEventListener("click", this.eventHandler);
+    }
+  };
+
+  toggled() {
+    
+    if (!this.container) {
+      return;
+    }
+    this.isOpened = !this.isOpened;
+    if (this.isOpened) {
+      window.addEventListener("click", this.eventHandler);
+    } else {
+      window.removeEventListener("click", this.eventHandler);
+    }
   }
 
   getUser() {
@@ -72,6 +117,7 @@ export class MessagesComponent {
 
   }
   sendMessage() {
+    console.log(this.message);
     this.messagesService.sendMessage(this.senderUser._id, this.receiverUser._id, this.receiverUser.username, this.message).subscribe({
       next: (data) => {
         this.message = ''; //reset message

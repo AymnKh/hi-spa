@@ -1,5 +1,5 @@
 <div>
-  <app-navbar></app-navbar>
+  <app-navbar (onlineUsers)="online($event)"></app-navbar>
   <div class="container-fluid" style="margin-top: 10px">
     <div class="row">
       <div class="col s12 m4 l3">
@@ -15,6 +15,7 @@
                     class="circle responsive-img"
                     src="http://placeimg.com/200/200/nature"
                   />
+                  
                 </div>
               </a>
               <div class="card-action">
@@ -34,7 +35,10 @@
                   (click)="unfollow(user._id)"
                   >unFollow</a
                 >
-                <a [routerLink]="['/chat',user._id]"><i class="material-icons right chat-icon">message</i></a>
+                <a [routerLink]="['/chat',user._id]">
+                  <i class="material-icons right chat-icon">message</i>
+                  <div class="online" *ngIf="checkOnlineStatus(user._id)"></div>
+                </a>
               </div>
             </div>
           </div>

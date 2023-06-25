@@ -38,7 +38,7 @@ export class MessageNotificationsComponent {
       error: (err) => {
         console.log(err); // log error
       },
-     
+
     });
   }
   time(time: Date) {
@@ -52,6 +52,9 @@ export class MessageNotificationsComponent {
       },
       error: (err) => {
         console.log(err);
+      },
+      complete: () => {
+        this.socket.emit('reload', {}); // emit refresh event
       }
     })
   }

@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ChatComponent {
   navbarContent: any;
+  onlineUsers:string[] = [];
   constructor() { }
 
   ngOnInit() {
@@ -15,5 +16,9 @@ export class ChatComponent {
 
   ngAfterViewInit() {
     this.navbarContent.style.display = 'none'; // hide the navbar content
+  }
+
+  online(event:any) {
+    this.onlineUsers = event;
   }
 }

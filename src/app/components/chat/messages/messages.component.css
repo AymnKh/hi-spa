@@ -34,6 +34,12 @@
   font-size: 15px;
 }
 
+.isOffline {
+  color: darkgray;
+  margin-top: -5px !important;
+  font-size: 15px;
+}
+
 .call_cam {
   margin-left: 4vw;
   margin-top: 0;
@@ -92,7 +98,7 @@ textarea,
 }
 
 .chat-bubble.left {
-  background: #212A3E;
+  background: #212a3e;
   float: left;
   margin-left: 2px;
 }
@@ -107,7 +113,7 @@ textarea,
 
 .left .msg_time_send {
   position: absolute;
-  color: #9BA4B5;
+  color: #9ba4b5;
   font-size: 14px;
   font-weight: 600;
   top: 57px;
@@ -123,9 +129,8 @@ textarea,
   position: relative;
   top: 20px;
   width: 35px;
-
 }
-.left{
+.left {
   margin-bottom: 7px;
 }
 
@@ -136,7 +141,7 @@ textarea,
 
 .right .msg_time_send {
   position: absolute;
-  color: #9BA4B5;
+  color: #9ba4b5;
   font-size: 14px;
   font-weight: 600;
   top: 56px;
@@ -166,7 +171,7 @@ textarea,
   font-size: 35px !important;
   background: inherit !important;
   border: none !important;
-  opacity: .8;
+  opacity: 0.8;
   cursor: pointer;
   position: absolute;
   top: 0;
@@ -189,8 +194,12 @@ textarea,
 .suffix:hover {
   background-color: #394867;
 }
-
-
+emoji-mart {
+  width: 353px;
+  top: 56px;
+  left: -100px;
+  position: relative;
+}
 
 @media only screen and (max-width: 800px) {
   .larg-icon {
