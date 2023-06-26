@@ -9,7 +9,7 @@ import { io } from 'socket.io-client';
 @Component({
   selector: 'app-side',
   standalone: true,
-  imports: [CommonModule , RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './side.component.html',
   styleUrls: ['./side.component.css']
 })
@@ -19,10 +19,10 @@ export class SideComponent {
   chatList: chat[] = [];
   count = 0
   socket: any;
-  constructor(private usersService: UsersService, private tokenService: TokenService) { 
+  constructor(private usersService: UsersService, private tokenService: TokenService) {
     this.socket = io('http://localhost:3000'); // connect to the socket
   }
-  ngOnInit() { 
+  ngOnInit() {
     this.user = this.tokenService.getPayload(); // get user payload
     this.getUser();
     this.socket.on('reload', () => {
@@ -42,10 +42,13 @@ export class SideComponent {
       },
       complete: () => {
         this.chatList.forEach((chat) => {
-          const read = chat.messageId.messages[chat.messageId.messages.length - 1].isRead
-          if (!read) {
-            this.count += 1;
+          if (chat.messageId.messages[chat.messageId.messages.length - 1].senderName !== this.user.username) { // check if last message sender not current user
+            const read = chat.messageId.messages[chat.messageId.messages.length - 1].isRead; //check if message is read or not
+            if (!read) {
+              this.count += 1; // count +1
+            }
           }
+
         })
       }
     });

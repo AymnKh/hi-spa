@@ -45,6 +45,14 @@ const routes: Routes = [
   {
     path: 'chat/:id',
     loadChildren: () => import('./components/chat/chat.module').then(m => m.ChatModule),
+  },
+  {
+    path: 'photos/:id',
+    loadChildren: () => import('./components/photos/photos.module').then(m => m.PhotosModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'streams'
   }
 ];
 

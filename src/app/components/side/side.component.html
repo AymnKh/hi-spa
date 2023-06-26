@@ -4,19 +4,19 @@
       <div class="col s3 waves-effect">
         <a>
           <span>Posts</span>
-          <span class="count">15</span>
+          <span class="count">{{ user.posts.length }}</span>
         </a>
       </div>
       <div class="col s5 waves-effect">
         <a>
           <span>Following</span>
-          <span class="count">10</span>
+          <span class="count">{{ user.following.length }}</span>
         </a>
       </div>
       <div class="col s4 waves-effect">
         <a>
           <span>Followers</span>
-          <span class="count">30</span>
+          <span class="count">{{ user.followers.length }}</span>
         </a>
       </div>
     </div>
@@ -50,7 +50,7 @@
     </a>
   </li>
   <li class="collection-item">
-    <a routerLinkActive="active" routerLink="/moka">
+    <a routerLinkActive="active" [routerLink]="['/photos', user._id]">
       Photos
       <div class="secondary-content">
         <i class="material-icons">photo_library</i>
@@ -67,10 +67,12 @@
   </li>
   <li class="collection-item">
     <a routerLinkActive="active" routerLink="/messages">
-      Messages 
-      <span class="count_badge" *ngIf="count">{{count}}</span>
+      Messages
+      <span class="count_badge" *ngIf="count">{{ count }}</span>
       <div class="secondary-content">
-        <i class="material-icons" [ngClass]="count > 0 ? 'alret' : ''">mode_comment</i>
+        <i class="material-icons" [ngClass]="count > 0 ? 'alret' : ''"
+          >mode_comment</i
+        >
       </div>
     </a>
   </li>

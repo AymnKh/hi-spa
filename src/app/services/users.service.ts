@@ -22,10 +22,10 @@ export class UsersService {
   followUser(followId: string) {
     return this.http.post(`${environment.apiUrl}/friends/follow-user`, { followId });
   }
-  unfollowUser(followId: string) { 
+  unfollowUser(followId: string) {
     return this.http.post(`${environment.apiUrl}/friends/unfollow-user`, { followId });
   }
-  
+
   markNotifications(id: string, deleteIt?: boolean) {
     return this.http.post(`${environment.apiUrl}/friends/mark/${id}`, { deleteIt });
   }
@@ -33,4 +33,8 @@ export class UsersService {
   markAllAsRead() {
     return this.http.post(`${environment.apiUrl}/friends/mark-all`, {});
   }
+  uploadPhoto(photo: string) {
+    return this.http.post(`${environment.apiUrl}/upload-photo`, { photo });
+  }
+
 }
