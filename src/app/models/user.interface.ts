@@ -17,7 +17,15 @@ export interface User {
     following: Following[]
     notifications: Notifications[]
     chatList: chat[]
+    photoVersion: string
+    photoId: string
+    photos: photos[]
     _id: string
+}
+
+export interface photos {
+    photoVersion: string
+    photoId: string
 }
 
 export interface chat {
@@ -27,6 +35,7 @@ export interface chat {
 
 export interface Post {
     _id: string
+    userId: User
     username: string
     post: string
     totalLikes: number
@@ -56,7 +65,7 @@ export interface Notifications {
     _id: string
     action: string
     createdAt: string
-    senderId: string
+    senderId: User
     read: boolean
     viewProfile: boolean
 }

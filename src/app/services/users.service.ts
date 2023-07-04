@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { User } from '../models/user.interface';
+import { User, photos } from '../models/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +35,13 @@ export class UsersService {
   }
   uploadPhoto(photo: string) {
     return this.http.post(`${environment.apiUrl}/upload-photo`, { photo });
+  }
+
+  setProfilePhoto(photo: photos) {
+    return this.http.put(`${environment.apiUrl}/set-profile/${photo.photoId}/${photo.photoVersion}`, { photo });
+  }
+  deletePhoto(photo: photos) {
+    return this.http.get(`${environment.apiUrl}/delete-photo/${photo.photoId}`);
   }
 
 }

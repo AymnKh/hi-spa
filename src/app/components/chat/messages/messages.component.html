@@ -6,7 +6,7 @@
           <div class="col s8">
             <div class="col s12 receiver-img">
               <img
-                src="http://placeimg.com/100/100/nature"
+               src="https://res.cloudinary.com/des1acmba/image/upload/v{{receiverUser.photoVersion}}/{{ receiverUser.photoId }}"
                 alt=""
                 class="circle"
               />
@@ -50,7 +50,7 @@
             senderUser.username !== msg.senderName
           "
         >
-          <img src="http://placeimg.com/50/50/nature" alt="" class="circle" />
+          <img src="https://res.cloudinary.com/des1acmba/image/upload/v{{receiverUser.photoVersion}}/{{ receiverUser.photoId }}" alt="" class="" />
           <div class="chat-bubble left">
             <div class="message">{{ msg.body }}</div>
           </div>
@@ -65,10 +65,10 @@
           </div>
           <span class="msg_time_send">{{ time(msg.createdAt) }}</span>
           <img
-            src="http://placeimg.com/50/50/nature"
+             src="https://res.cloudinary.com/des1acmba/image/upload/v{{senderUser.photoVersion}}/{{ senderUser.photoId }}" 
             width="20"
             alt=""
-            class="circle receiver-read"
+            class="receiver-read"
           />
         </div>
       </div>

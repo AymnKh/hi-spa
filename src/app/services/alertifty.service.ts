@@ -57,7 +57,7 @@ export class AlertiftyService {
     // language resources 
     glossary: {
       // dialogs default title
-      title: 'AlertifyJS',
+      title: 'Hi-App',
       // ok button text
       ok: 'OK',
       // cancel button text

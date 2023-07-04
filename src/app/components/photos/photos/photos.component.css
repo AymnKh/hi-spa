@@ -45,3 +45,12 @@
   top: -9px;
   background-color: #212a3e;
 }
+.preloader-wrapper {
+  margin-bottom: 74px;
+  margin-right: -61px;
+  top: 4px;
+  right: 153px;
+}
+.spinner-layer{
+  border-color:#212a3e
+}

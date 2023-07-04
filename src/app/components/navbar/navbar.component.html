@@ -18,7 +18,10 @@
 
     <div class="nav-content">
       <div class="nav-div">
-        <img class="circle responsive-img" src="http://placeimg.com/100/100" />
+        <img
+          class="circle responsive-img"
+          src="https://res.cloudinary.com/des1acmba/image/upload/v{{user.photoVersion}}/{{ user.photoId }}"
+        />
       </div>
       <h1 class="profile-name">{{ user.username }}</h1>
     </div>
@@ -26,7 +29,10 @@
 </nav>
 <ul id="mobile" class="sidenav">
   <li class="side">
-    <img class="circle responsive-img" src="http://placeimg.com/100/100" />
+    <img
+      class="circle responsive-img"
+      src="https://res.cloudinary.com/des1acmba/image/upload/v{{user.photoVersion}}/{{ user.photoId }}"
+    />
     <h1 class="profile-name">{{ user.username }}</h1>
   </li>
 

@@ -16,7 +16,9 @@
                 >
                   <img
                     class="circle"
-                    src="http://placeimg.com/200/200/nature"
+                    src="https://res.cloudinary.com/des1acmba/image/upload/v{{
+                      item.receiverId.photoVersion
+                    }}/{{ item.receiverId.photoId }}"
                   />
                   <span class="title">{{ item.receiverId.username }}</span>
                   <h6

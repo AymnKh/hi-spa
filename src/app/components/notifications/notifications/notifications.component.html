@@ -13,7 +13,7 @@
           </p>
           <ul class="collection col s12 m9">
             <li class="collection-item avatar" *ngFor="let item of notifications">
-              <img class="circle" src="http://placeimg.com/200/200/nature">
+              <img class="circle" src="https://res.cloudinary.com/des1acmba/image/upload/v{{item.senderId.photoVersion}}/{{ item.senderId.photoId }}">
               <span class="title">{{item.action}}</span>
               <a class="secondary-content">
                 <i class="material-icons" *ngIf="!item.read">radio_button_unchecked</i>

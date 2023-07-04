@@ -34,6 +34,7 @@ export class MessageNotificationsComponent {
       next: (user) => {
         this.user = user; // set user
         this.chatList = user.chatList; // get chat list
+        console.log(this.chatList);
       },
       error: (err) => {
         console.log(err); // log error

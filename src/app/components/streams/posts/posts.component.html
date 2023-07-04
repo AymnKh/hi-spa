@@ -1,6 +1,6 @@
 <ul class="collection" *ngFor="let post of posts">
   <li class="collection-item avatar">
-    <img src="http://placeimg.com/100/100/nature" alt="" class="circle" />
+    <img src="https://res.cloudinary.com/des1acmba/image/upload/v{{user.photoVersion}}/{{ user.photoId }}" alt="" class="circle" />
     <span class="title">{{ post.username }}</span>
     <p class="time">
       {{ time(post.createdAt) }}
@@ -12,7 +12,7 @@
     <div class="col s12">
       <div class="card">
         <div class="card-image">
-          <img src="http://placeimg.com/600/400/nature" alt="post image" />
+          <img src="" alt="post image" />
         </div>
         <div class="card-content post-text">
           <p>{{ post.post }}</p>
