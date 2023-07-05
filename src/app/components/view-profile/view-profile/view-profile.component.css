@@ -1,0 +1,51 @@
+.container-fluid {
+  margin-top: 15px;
+}
+
+.tabs a {
+  color: #212a3e;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.tabs .active {
+  background: inherit !important;
+}
+
+#posts,
+#following,
+#followers {
+  position: relative;
+  top: 2.5rem;
+}
+
+.profile {
+  top: -30px;
+  position: relative;
+}
+
+.title {
+  font-weight: bold;
+  color: #212a3e;
+  font-size: 28px;
+}
+
+.cityName {
+  font-size: 17px;
+  color: #666565;
+  line-height: 20px;
+  margin-top: -31px;
+  font-weight: bold;
+}
+
+.profile-image {
+  margin-top: 15px;
+  border-radius: 16px;
+  border: solid 5px #41a3ac;
+}
+
+@media only screen and (min-width: 600px) {
+  .profile-div {
+    width: 80%;
+  }
+}

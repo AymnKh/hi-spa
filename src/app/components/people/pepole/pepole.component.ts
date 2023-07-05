@@ -4,6 +4,7 @@ import { UsersService } from './../../../services/users.service';
 import { Component } from '@angular/core';
 import * as _ from 'lodash';
 import io from 'socket.io-client';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-pepole',
   templateUrl: './pepole.component.html',
@@ -15,7 +16,7 @@ export class PepoleComponent {
   following: Following[] = [];
   socket: any;
   onlineUsers: string[] = [];
-  constructor(private usersService: UsersService, private tokenService: TokenService) { 
+  constructor(private usersService: UsersService, private tokenService: TokenService, private router: Router) {
     this.socket = io('http://localhost:3000'); // connect to the socket
   }
   ngOnInit(): void {
@@ -36,11 +37,11 @@ export class PepoleComponent {
       error: (err) => {
         console.log(err); // log error
       },
-      complete: () => { 
+      complete: () => {
         this.allUsers = _.filter(this.allUsers, (user) => { // filter out the current user
           return user.username !== this.user.username;
         });
-       }
+      }
 
     });
   }
@@ -59,14 +60,14 @@ export class PepoleComponent {
     });
   }
 
-  isUserFollowing( userId: string) {
+  isUserFollowing(userId: string) {
     const result = _.find(this.following, ['followedUser._id', userId]);
     if (result) {
       return true;
     } else {
       return false;
     }
-}
+  }
   unfollow(userId: string) {
     this.usersService.unfollowUser(userId).subscribe({
       next: (res) => {
@@ -75,9 +76,9 @@ export class PepoleComponent {
       error: (err) => {
         console.log(err);
       },
-      complete: () => { 
+      complete: () => {
         this.socket.emit('reload'); // emit an event to reload the posts
-       }
+      }
     });
   }
   followUser(followId: string) {
@@ -90,11 +91,11 @@ export class PepoleComponent {
       },
       complete: () => {
         this.socket.emit('reload'); // emit an event to reload the posts
-       }
+      }
     });
   }
 
-  online(event:any) {
+  online(event: any) {
     this.onlineUsers = event;
   }
 
@@ -106,5 +107,10 @@ export class PepoleComponent {
       return false;
     }
 
+  }
+
+
+  viewProfile(id: string) {
+    this.router.navigate(['profile', id])
   }
 }

@@ -39,6 +39,10 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'profile/:id',
+    loadChildren: () => import('./components/view-profile/view-profile.module').then(m => m.ViewProfileModule),
+  },
+  {
     path: 'post/:id',
     loadChildren: () => import('./components/comments/comments.module').then(m => m.CommentsModule),
   },

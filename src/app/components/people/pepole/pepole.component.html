@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col s6 m4 l3 card-div" *ngFor="let user of allUsers">
             <div class="card">
-              <a>
+              <a class="pointer" (click)="viewProfile(user._id)">
                 <div class="card-image img-div">
                   <img
                     class="circle responsive-img"

@@ -4,6 +4,7 @@ import { User, Following, Followers } from 'src/app/models/user.interface';
 import { TokenService } from 'src/app/services/token.service';
 import { UsersService } from 'src/app/services/users.service';
 import * as _ from 'lodash';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-followers',
@@ -15,7 +16,7 @@ export class FollowersComponent {
   followers: Followers[] = [];
   following: Following[] = [];
   socket: any;
-  constructor(private usersService: UsersService, private tokenService: TokenService) {
+  constructor(private usersService: UsersService, private tokenService: TokenService, private router: Router) {
     this.socket = io('http://localhost:3000'); // connect to the socket
   }
   ngOnInit(): void {
@@ -74,5 +75,9 @@ export class FollowersComponent {
         this.socket.emit('reload'); // emit an event to reload the posts
       }
     });
+  }
+
+  viewProfile(id: string) {
+    this.router.navigate(['profile', id])
   }
 }

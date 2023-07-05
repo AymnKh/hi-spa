@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import * as _ from 'lodash';
 import { io } from 'socket.io-client';
 import { User, Following } from 'src/app/models/user.interface';
@@ -14,7 +15,7 @@ export class FollowingComponent {
   user = {} as User;
   following: Following[] = [];
   socket: any;
-  constructor(private usersService: UsersService, private tokenService: TokenService) {
+  constructor(private usersService: UsersService, private tokenService: TokenService, private router:Router) {
     this.socket = io('http://localhost:3000'); // connect to the socket
   }
   ngOnInit(): void {
@@ -50,6 +51,11 @@ export class FollowingComponent {
         this.socket.emit('reload'); // emit an event to reload the posts
       }
     });
+  }
+
+
+  viewProfile(id: string) {
+    this.router.navigate(['profile', id])
   }
 
 }
