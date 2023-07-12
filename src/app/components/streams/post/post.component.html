@@ -5,7 +5,12 @@
         <form [formGroup]="post" (ngSubmit)="addPost()">
           <div class="row form-div">
             <div class="input-field col s12 post-content">
-              <textarea id="textarea1" class="materialize-textarea" formControlName="post"></textarea>
+              <textarea
+                id="textarea1"
+                class="materialize-textarea"
+                formControlName="post"
+              ></textarea>
+              <img src="{{ url }}" *ngIf="url" class="post-photo" alt="preview" />
               <label for="textarea1">What's on your mind , Moka?</label>
               <div class="row input-row">
                 <div class="col s6">
@@ -14,7 +19,13 @@
                       <span
                         ><i class="material-icons left">image</i> Photo</span
                       >
-                      <input type="file" />
+                      <input
+                        type="file"
+                        accept=".png,.jpg,.jpeg,.gif"
+                        id="upload"
+                        type="file"
+                        (change)="onSelectFile($event)"
+                      />
                     </div>
                     <div class="file-path-wrapper">
                       <input class="file-path validate" type="text" />
@@ -28,6 +39,9 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="progress" *ngIf="loading">
+            <div class="indeterminate"></div>
           </div>
         </form>
       </div>

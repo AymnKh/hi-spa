@@ -9,6 +9,16 @@
   position: relative;
   top: 20px;
 }
+
+.post-photo {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  position: absolute;
+  top: -1.8vw;
+  right: 0;
+  object-fit: cover;
+}
 form {
   background-color: #fff;
 }
@@ -40,4 +50,11 @@ form {
 }
 .file-field input[type="file"] {
   width: 70% !important;
+}
+.progress{
+  margin: 0;
+  background-color: #394867;
+}
+.progress .indeterminate{
+  background-color: #212a3e;
 }

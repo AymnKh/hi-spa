@@ -11,7 +11,7 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-  addPost(post: string) {
+  addPost(post: {post?:string,photo?:string}) {
     return this.http.post(`${environment.apiUrl}/posts/add`, { post });
   }
 

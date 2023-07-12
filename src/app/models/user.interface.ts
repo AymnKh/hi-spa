@@ -43,6 +43,8 @@ export interface Post {
     likes: any[]
     createdAt: string
     updatedAt: string
+    photoVersion: string
+    photoId: string
     __v: number
 
 }
