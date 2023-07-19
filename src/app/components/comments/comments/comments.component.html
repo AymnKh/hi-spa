@@ -9,7 +9,9 @@
         <ul class="collection">
           <li class="collection-item avatar">
             <img
-              src="http://placeimg.com/100/100/nature"
+              src="https://res.cloudinary.com/des1acmba/image/upload/v{{
+                post.userId?.photoVersion
+              }}/{{ post.userId?.photoId }}"
               alt=""
               class="circle"
             />
@@ -18,15 +20,19 @@
           </li>
         </ul>
         <div class="card">
-          <div class="card-image">
+          <div class="card-image" *ngIf="post.photoId">
             <img
-              class="post-image"
-              src="http://placeimg.com/400/300/nature"
+              src="https://res.cloudinary.com/des1acmba/image/upload/v{{
+                post.photoVersion
+              }}/{{ post.photoId }}"
               alt="post image"
             />
           </div>
-          <div class="card-content post-content">
-            <p class="post-text">{{ post.post }}</p>
+          <p class="post-title" *ngIf="!post.photoId">
+            {{ post.post }}
+          </p>
+          <div class="card-content post-text" *ngIf="post.photoId">
+            <p>{{ post.post }}</p>
           </div>
         </div>
       </div>
@@ -57,9 +63,14 @@
           *ngFor="let comment of post.comments"
         >
           <li class="collection-item avatar">
-            <img class="circle" src="http://placeimg.com/100/100/nature" />
+            <img
+              class="circle"
+              src="https://res.cloudinary.com/des1acmba/image/upload/v{{
+                comment.userId.photoVersion
+              }}/{{ comment.userId.photoId }}"
+            />
             <span class="title">{{ comment.username }}</span>
-            <p class="time">{{time(comment.createdAt)}}</p>
+            <p class="time">{{ time(comment.createdAt) }}</p>
             <p class="post-comment">{{ comment.comment }}</p>
           </li>
         </ul>

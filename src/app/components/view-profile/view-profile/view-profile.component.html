@@ -38,21 +38,35 @@
                 class="circle"
               />
               <span class="title">{{ post.username }}</span>
-              <i class="material-icons title edit waves-effect"> edit </i>
-              <i class="material-icons delete waves-effect"> delete </i>
+              <i
+                *ngIf="currentUser._id === userId"
+                class="material-icons title edit waves-effect"
+              >
+                edit
+              </i>
+              <i
+                *ngIf="currentUser._id === userId"
+                class="material-icons delete waves-effect"
+              >
+                delete
+              </i>
               <p class="time">{{ time(post.createdAt) }}</p>
             </li>
             <div class="row">
               <div class="col s12">
                 <div class="card">
-                  <div class="card-image">
+                  <div class="card-image" *ngIf="post.photoId">
                     <img
-                      class="post-image"
-                      src="http://placeimg.com/500/500/nature"
+                      src="https://res.cloudinary.com/des1acmba/image/upload/v{{
+                        post.photoVersion
+                      }}/{{ post.photoId }}"
                       alt="post image"
                     />
                   </div>
-                  <div class="card-content post-text">
+                  <p class="post-title" *ngIf="!post.photoId">
+                    {{ post.post }}
+                  </p>
+                  <div class="card-content post-text" *ngIf="post.photoId">
                     <p>{{ post.post }}</p>
                   </div>
                   <div class="card-action">

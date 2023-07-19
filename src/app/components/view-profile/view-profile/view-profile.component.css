@@ -119,16 +119,33 @@
 }
 
 .post-text {
-  padding: 15px 5px !important;
-  font-size: 15px;
-  font-weight: bold;
+  padding: 10px 5px !important;
+  font-size: 22px;
 }
 
 .post-image {
-  margin-top: -26px;
+  margin-top: -1.7rem;
   width: 500px;
-  height: 500px;
-  object-fit: cover;
+  height: 400px;
+}
+
+.post-title {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: -1.3rem;
+  padding: 10px;
+  width: 100%;
+  height: 300px;
+  min-width: 15em;
+  overflow: hidden;
+  color: white;
+  background-color: #212a3e;
+  font-family: anton;
+  font-size: 24px;
+  letter-spacing: 1px;
 }
 
 .icon-Span {

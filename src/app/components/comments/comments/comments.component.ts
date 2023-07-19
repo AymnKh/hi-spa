@@ -44,6 +44,7 @@ export class CommentsComponent {
     this.postService.getPost(postId).subscribe({
       next: (post) => {
         this.post = post; // set the post
+        console.log(post);
       },
       error: (err) => { console.log(err) },
       complete: () => { }

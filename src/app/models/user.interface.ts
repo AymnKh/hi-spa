@@ -62,6 +62,7 @@ export interface Comments {
     username: string
     comment: string
     createdAt: string
+    userId:User
 }
 export interface Notifications {
     _id: string
