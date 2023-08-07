@@ -79,12 +79,15 @@ nav {
   font-weight: 500;
   margin: 0 auto;
 }
+.responsive-img {
+  cursor: pointer;
+}
 .side-footer {
   padding-top: 10px;
 }
 .side-footer .material-icons {
   margin: 0 5px;
 }
-nav.nav-extended .nav-wrapper{
+nav.nav-extended .nav-wrapper {
   min-height: 85px;
 }

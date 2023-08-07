@@ -19,6 +19,7 @@
     <div class="nav-content">
       <div class="nav-div">
         <img
+        (click)="viewProfile(user._id)"
           class="circle responsive-img"
           src="https://res.cloudinary.com/des1acmba/image/upload/v{{user.photoVersion}}/{{ user.photoId }}"
         />
@@ -30,6 +31,7 @@
 <ul id="mobile" class="sidenav">
   <li class="side">
     <img
+    (click)="viewProfile(user._id)"
       class="circle responsive-img"
       src="https://res.cloudinary.com/des1acmba/image/upload/v{{user.photoVersion}}/{{ user.photoId }}"
     />

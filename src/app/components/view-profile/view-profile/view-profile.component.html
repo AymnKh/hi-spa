@@ -39,8 +39,10 @@
               />
               <span class="title">{{ post.username }}</span>
               <i
+              data-target="modal"
                 *ngIf="currentUser._id === userId"
-                class="material-icons title edit waves-effect"
+                class="material-icons title edit waves-effect modal-trigger"
+                (click)="openModal(post)"
               >
                 edit
               </i>
@@ -103,3 +105,17 @@
     </div>
   </div>
 </div>
+
+  <!-- Modal Structure -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h4>Post Edit</h4>
+    </div>
+    <div>
+      <textarea  class="materialize-textarea" cols="30" rows="10">{{postModal.post}}</textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-close btn waves-effect">Close</button>
+      <button  class="waves-effect btn btn">Agree</button>
+    </div>
+  </div>

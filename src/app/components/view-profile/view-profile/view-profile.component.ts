@@ -20,15 +20,15 @@ export class ViewProfileComponent {
   user = {} as User;
   posts: Post[] = [];
   socket: any;
-  userId!: string ;
-  constructor(private usersService: UsersService, private route: ActivatedRoute, private postService: PostService, private router: Router, private tokenService:TokenService) {
+  userId!: string;
+  modalElement: any;
+  postModal = {} as Post;
+  constructor(private usersService: UsersService, private route: ActivatedRoute, private postService: PostService, private router: Router, private tokenService: TokenService) {
     this.socket = io('http://localhost:3000'); // connect to the socket
-   }
+  }
   ngOnInit() {
+    this.styleInit();
     this.currentUser = this.tokenService.getPayload();
-    this.navbarContent = document.querySelector('.nav-content'); // get the navbar content
-    const tabs = document.querySelectorAll('.tabs')
-    const instance = M.Tabs.init(tabs, {});
     this.route.params.subscribe(param => {
       this.userId = param['id']; // get userId from params
       this.getUserData(this.userId); //get user data
@@ -36,6 +36,13 @@ export class ViewProfileComponent {
     this.socket.on('reload', () => {
       this.getUserData(this.userId);
     })
+  }
+  styleInit() {
+    this.navbarContent = document.querySelector('.nav-content'); // get the navbar content
+    const tabs = document.querySelectorAll('.tabs')
+    const tab = M.Tabs.init(tabs, {});
+    this.modalElement = document.querySelector('.modal'); // get the modal
+    const modal = M.Modal.init(this.modalElement, {});
   }
   ngAfterViewInit() {
     this.navbarContent.style.display = 'none'; // hide the navbar content
@@ -75,6 +82,8 @@ export class ViewProfileComponent {
   commentBox(postId: string) {
     this.router.navigate(['post', postId]); // navigate to the post page
   }
-
+  openModal(post:Post) {
+    this.postModal = post; // assign the modal
+  }
 
 }

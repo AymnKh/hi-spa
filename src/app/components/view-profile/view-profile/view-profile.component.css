@@ -41,7 +41,7 @@
 .profile-image {
   margin-top: 15px;
   border-radius: 16px;
-  border: solid 5px #41a3ac;
+  border: solid 5px #394867;
 }
 
 .container-fluid {
@@ -49,7 +49,7 @@
 }
 
 .tabs a {
-  color: #00838f;
+  color: #394867;
   font-weight: bold;
   font-size: 16px;
 }
@@ -72,7 +72,7 @@
 
 .title {
   font-weight: bold;
-  color: #00838f;
+  color: #394867;
   font-size: 28px;
 }
 
@@ -89,7 +89,7 @@
   width: 250px;
   height: 250px;
   border-radius: 16px;
-  border: solid 5px #41a3ac;
+  border: solid 5px #394867;
 }
 
 @media only screen and (min-width: 600px) {
@@ -189,6 +189,10 @@
   color: #394867 !important;
 }
 
+
+.modal{
+  top: 32% !important;
+}
 
 @media only screen and (min-width: 600px) {
   .profile-div {

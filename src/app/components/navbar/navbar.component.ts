@@ -18,7 +18,7 @@ export class NavbarComponent {
   user = {} as User;
   socket: any;
   @Output('onlineUsers') onlineUsers = new EventEmitter<string[]>();
-  constructor(private tokenService: TokenService, private router: Router, private renderer: Renderer2, private usersService:UsersService) {
+  constructor(private tokenService: TokenService, private router: Router, private renderer: Renderer2, private usersService: UsersService) {
     this.socket = io('http://localhost:3000'); // connect to the socket
   }
 
@@ -53,6 +53,10 @@ export class NavbarComponent {
     this.tokenService.deleteToken();
     this.socket.disconnect();
     this.router.navigate(['']);
+  }
+
+  viewProfile(id: string) {
+    this.router.navigate([`/profile/${id}`])
   }
 
   ngOnDestroy() { // this is to remove the overlay when the user logs out
