@@ -9,6 +9,7 @@ import * as _ from 'lodash';
 
 import { Post, User } from 'src/app/models/user.interface';
 import { PostService } from 'src/app/services/post.service';
+import { AlertiftyService } from 'src/app/services/alertifty.service';
 @Component({
   selector: 'app-view-profile',
   templateUrl: './view-profile.component.html',
@@ -23,7 +24,7 @@ export class ViewProfileComponent {
   userId!: string;
   modalElement: any;
   postModal = {} as Post;
-  constructor(private usersService: UsersService, private route: ActivatedRoute, private postService: PostService, private router: Router, private tokenService: TokenService) {
+  constructor(private usersService: UsersService, private alertifyService: AlertiftyService, private route: ActivatedRoute, private postService: PostService, private router: Router, private tokenService: TokenService) {
     this.socket = io('http://localhost:3000'); // connect to the socket
   }
   ngOnInit() {
@@ -82,8 +83,51 @@ export class ViewProfileComponent {
   commentBox(postId: string) {
     this.router.navigate(['post', postId]); // navigate to the post page
   }
-  openModal(post:Post) {
+  openModal(post: Post) {
     this.postModal = post; // assign the modal
   }
+
+  editPost() {
+    if (this.postModal) {
+      const body = {
+        id: this.postModal._id,
+        post: this.postModal.post
+      };
+      this.postService.editPost(body.id, body.post).subscribe({
+        next: (data) => {
+          console.log(data);
+          this.socket.emit('reload', {});
+          this.alertifyService.success('post edited successfully')
+
+        },
+        error: (err) => {
+          console.log(err);
+          this.alertifyService.error('error occured')
+        }
+      });
+      M.Modal.getInstance(this.modalElement).close();
+
+    } else {
+      this.alertifyService.error('enter post text');
+      document.getElementsByName('post')[0].focus()
+    }
+
+  }
+
+  deletePost(id: string) {
+    this.alertifyService.confirm('Are you sure you want to delete this post?', () => {
+      this.postService.deletePost(id).subscribe({
+        next: (data) => {
+          this.socket.emit('reload', {});
+          this.alertifyService.success('post deleted successfully')
+        },
+        error: (err) => {
+          this.alertifyService.error('error occured')
+        }
+      })
+    })
+
+  }
+
 
 }

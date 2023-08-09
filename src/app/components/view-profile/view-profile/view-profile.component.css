@@ -193,6 +193,22 @@
 .modal{
   top: 32% !important;
 }
+.btn{
+  margin-left: 20px !important;
+  background-color: #212a3e;
+}
+.modal-close{
+  background-color: #b71c1c;
+}
+.title-div {
+  margin-left: 0 !important;
+  text-align: center;
+}
+
+.title-name {
+  color: #212a3e;
+  font-weight: bold !important;
+}
 
 @media only screen and (min-width: 600px) {
   .profile-div {

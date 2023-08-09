@@ -39,7 +39,7 @@
               />
               <span class="title">{{ post.username }}</span>
               <i
-              data-target="modal"
+                data-target="modal"
                 *ngIf="currentUser._id === userId"
                 class="material-icons title edit waves-effect modal-trigger"
                 (click)="openModal(post)"
@@ -49,6 +49,7 @@
               <i
                 *ngIf="currentUser._id === userId"
                 class="material-icons delete waves-effect"
+                (click)="deletePost(post._id)"
               >
                 delete
               </i>
@@ -94,28 +95,94 @@
               </div>
             </div>
           </ul>
+          <div class="row" *ngIf="user?.posts?.length == 0">
+            <h4 class="center">This user don't have any posts</h4>
+          </div>
         </div>
 
         <!-- Following Tab -->
-        <div id="following" class="col s12">Following here</div>
+        <div id="following" class="col s12">
+          <div class="row" *ngIf="user.following">
+            <div
+              class="col s6 m4 l3 card-div"
+              *ngFor="let user of user.following"
+            >
+              <div class="card">
+                <a [routerLink]="['/profile', user.followedUser._id]">
+                  <div class="card-image img-div">
+                    <img
+                      class="circle responsive-img"
+                      src="https://res.cloudinary.com/des1acmba/image/upload/v{{
+                        user.followedUser.photoVersion
+                      }}/{{ user.followedUser.photoId }}"
+                    />
+                  </div>
+                </a>
+                <div class="card-action title-div">
+                  <h3 class="card-title center-align title-name">
+                    {{ user.followedUser.username }}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="!user.following">
+            <h4 class="center">This user don't follow any other user</h4>
+          </div>
+        </div>
 
         <!-- Followers Tab -->
-        <div id="followers" class="col s12">Followers here</div>
+        <div id="followers" class="col s12">
+          <div class="row" *ngIf="user.followers">
+            <div
+              class="col s6 m4 l3 card-div"
+              *ngFor="let user of user.followers"
+            >
+              <div class="card">
+                <a [routerLink]="['/profile', user.followerUser._id]">
+                  <div class="card-image img-div">
+                    <img
+                      class="circle responsive-img"
+                      src="https://res.cloudinary.com/des1acmba/image/upload/v{{
+                        user.followerUser.photoVersion
+                      }}/{{ user.followerUser.photoId }}"
+                    />
+                  </div>
+                </a>
+                <div class="card-action title-div">
+                  <h3 class="card-title center-align title-name">
+                    {{ user.followerUser.username }}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="!user.followers">
+            <h4 class="center">No one Follow this user</h4>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-  <!-- Modal Structure -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <h4>Post Edit</h4>
-    </div>
-    <div>
-      <textarea  class="materialize-textarea" cols="30" rows="10">{{postModal.post}}</textarea>
-    </div>
-    <div class="modal-footer">
-      <button class="modal-close btn waves-effect">Close</button>
-      <button  class="waves-effect btn btn">Agree</button>
-    </div>
+<!-- Modal Structure -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h4>Post Edit</h4>
   </div>
+  <div>
+    <textarea
+      name="post"
+      [(ngModel)]="postModal.post"
+      class="materialize-textarea"
+      cols="30"
+      rows="10"
+      >{{ postModal.post }}</textarea
+    >
+  </div>
+  <div class="modal-footer">
+    <button class="modal-close btn waves-effect">Close</button>
+    <button class="waves-effect btn btn" (click)="editPost()">Agree</button>
+  </div>
+</div>
